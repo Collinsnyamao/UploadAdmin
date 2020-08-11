@@ -26,6 +26,7 @@ import { PaperTable } from "@/components";
 import axios from 'axios'
 import VueFilterDateFormat from 'vue-filter-date-format';
 
+const url = process.env.VUE_APP_SERVER_ADDRESS;
 export default {
   components: {
     PaperTable,
@@ -58,7 +59,7 @@ export default {
     let self = this;
     updateTable();
     function updateTable () {
-      axios.post("http://127.0.0.1:3000/upload/checksum", {
+      axios.post(url + "/upload/checksum", {
       })
         .then(function (response) {
           console.log(response);

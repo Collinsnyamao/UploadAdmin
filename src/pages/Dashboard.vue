@@ -95,6 +95,7 @@ import Chartist from 'chartist';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+const url = process.env.VUE_APP_SERVER_ADDRESS;
 export default {
   components: {
     StatsCard,
@@ -117,7 +118,7 @@ export default {
     updateBanks (){
       let self = this;
       if (this.newBank){
-        axios.post("http://127.0.0.1:3000/banks/new", {
+        axios.post(url + "/banks/new", {
           bankname: this.newBank
         })
           .then(function (response) {
@@ -132,7 +133,7 @@ export default {
       }
     },
     updateBankList (){
-      axios.get("http://127.0.0.1:3000/banks/list")
+      axios.get(url + "/banks/list")
         .then(response => {
           let self = this;
           let banksArray = [];
@@ -147,7 +148,7 @@ export default {
     deleteOneBank (){
       let self = this;
       if (this.deleteBank){
-        axios.post("http://127.0.0.1:3000/banks/delete", {
+        axios.post(url + "/banks/delete", {
           bankname: this.deleteBank
         })
           .then(function (response) {
@@ -169,7 +170,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://127.0.0.1:3000/banks/list")
+    axios.get(url + "/banks/list")
       .then(response => {
         let self = this;
         let banksArray = [];

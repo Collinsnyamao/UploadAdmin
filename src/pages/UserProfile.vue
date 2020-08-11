@@ -100,6 +100,7 @@ import UserCard from "./UserProfile/UserCard.vue";
 import MembersCard from "./UserProfile/MembersCard.vue";
 import axios from "axios";
 
+const url = process.env.VUE_APP_SERVER_ADDRESS;
 export default {
   components: {
     EditProfileForm,
@@ -120,7 +121,7 @@ export default {
   },
   mounted() {
     let self = this;
-    axios.post("http://127.0.0.1:3000/upload/checksum", {})
+    axios.post(url+"/upload/checksum", {})
       .then(function (response) {
         console.log(response);
         response.data.forEach(function (obj) {
@@ -152,7 +153,7 @@ export default {
   methods: {
     clearDatabase() {
       let self = this;
-      axios.post('http://127.0.0.1:3000/upload/clearDB', {
+      axios.post(url + '/upload/clearDB', {
         password: 'tintin'
       })
         .then(function (response) {
@@ -166,7 +167,7 @@ export default {
     },
     simulateResponse() {
       let self = this;
-      axios.post('http://127.0.0.1:3000/upload/simulate', {
+      axios.post(url + '/upload/simulate', {
       })
         .then(function (response) {
           console.log(response);
@@ -181,7 +182,7 @@ export default {
       let self = this;
       console.log(this.selectedID);
       if (this.selectedID){
-        axios.post('http://127.0.0.1:3000/upload/simulateOne', {
+        axios.post(url + '/upload/simulateOne', {
           id: this.selectedID
         })
           .then(function (response) {
