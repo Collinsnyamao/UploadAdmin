@@ -17,6 +17,7 @@
     "d3": "^5.16.0",
     "es6-promise": "^4.2.4",
     "moment": "^2.27.0",
+    "v-offline": "^1.2.1",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.5",
     "vue-clickaway": "^2.1.0",

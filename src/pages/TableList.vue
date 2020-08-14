@@ -3,7 +3,7 @@
       <div class="col-12">
         <card :title="title" :subTitle="subtitle">
           <div slot="raw-content" class="table-responsive">
-            <paper-table :data="checksumArray" :columns="tableColumns2">
+            <paper-table :data="checksumArray" :columns="tableColumns2" type="hover">
 
             </paper-table>
           </div>
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      tableColumns2: ["id", "user", "filename", "checksum", "status", "extension", "date"],
+      tableColumns2: ["id", "user", "filename", "status", "extension", "date"],
       checksumArray: [],
       title: 'Checksum table',
       subtitle: 'Checksum table',
@@ -78,6 +78,7 @@ export default {
             let newDate = new Date(date);
             console.log(newDate.getFullYear());
             let localDate = newDate.toLocaleDateString();
+            let time = newDate.toLocaleTimeString('en-US');
             let user = obj.user;
             let filename = obj.filename.replace('*','');
             let checksum = obj.checksum;
@@ -85,7 +86,7 @@ export default {
             let status = obj.status;
             let id = obj._id;
 
-            self.checksumArray.push({id: id, user: user, filename: filename, checksum: checksum, status: status,extension: extension, date: localDate})
+            self.checksumArray.push({id: id, user: user, filename: filename, status: status,extension: extension, date: localDate + ' ' + time})
 
           })
           console.log(self.checksumArray);
