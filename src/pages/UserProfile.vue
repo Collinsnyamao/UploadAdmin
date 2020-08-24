@@ -116,7 +116,6 @@ export default {
       emptyInput: '',
       clearChecksumPassword: true,
       selectedID: ''
-
     };
   },
   mounted() {
